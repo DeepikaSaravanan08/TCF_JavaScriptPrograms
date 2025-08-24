@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Closures Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #007acc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      background-color: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005999;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Closure Example</h1>
+  <p>Click the buttons to increase or decrease the counter.</p>
+
+  <button onclick="increase()">Increase</button>
+  <button onclick="decrease()">Decrease</button>
+  <button onclick="reset()">Reset</button>
+
+  <div id="result">Counter: 0</div>
+
+  <script>
+    // Closure function to create a private counter
+    function createCounter() {
+      let count = 0; // private variable
+
+      return {
+        increment: function() {
+          count++;
+          return count;
+        },
+        decrement: function() {
+          count--;
+          return count;
+        },
+        reset: function() {
+          count = 0;
+          return count;
+        },
+        value: function() {
+          return count;
+        }
+      };
+    }
+
+    // Create a counter instance
+    const counter = createCounter();
+
+    const result = document.getElementById("result");
+
+    function updateDisplay() {
+      result.textContent = "Counter: " + counter.value();
+    }
+
+    function increase() {
+      counter.increment();
+      updateDisplay();
+    }
+
+    function decrease() {
+      counter.decrement();
+      updateDisplay();
+    }
+
+    function reset() {
+      counter.reset();
+      updateDisplay();
+    }
+
+    // Initial display
+    updateDisplay();
+  </script>
+
+</body>
+</html>

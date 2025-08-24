@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS Practice - Deepika</title>
+</head>
+<body>
+<h2>JS Practice - Deepika</h2>
+
+<!-- 1. ID / Class / Name Example -->
+<h3 id="id1">Hello ID</h3>
+<p class="cls">Class 1</p>
+<p class="cls">Class 2</p>
+<input type="radio" name="opt" value="One">One
+<input type="radio" name="opt" value="Two">Two
+<br>
+<button onclick="idSel()">By ID</button>
+<button onclick="clsSel()">By Class</button>
+<button onclick="nameSel()">By Name</button>
+
+<hr>
+
+<!-- 2. Array Example -->
+<h3>Array Example</h3>
+<p id="arr"></p>
+
+<hr>
+
+<!-- 3. String Example -->
+<h3>String Example</h3>
+<p id="str"></p>
+
+<script>
+// 1. ID / Class / Name
+idSel=()=>id1.style.color=id1.style.color?"":"red";
+clsSel=()=>[...document.getElementsByClassName("cls")].forEach(e=>e.style.color=e.style.color?"":"blue");
+nameSel=()=>alert([...document.getElementsByName("opt")].find(e=>e.checked)?.value||"None");
+
+// 2. Array Example
+let arr=[10,20,30];
+document.getElementById("arr").innerText="Array: "+arr+" | Doubled: "+arr.map(n=>n*2);
+
+// 3. String Example
+let str="Deepika";
+document.getElementById("str").innerText=`Original: ${str} | Upper: ${str.toUpperCase()} | Length: ${str.length}`;
+</script>
+</body>
+</html>

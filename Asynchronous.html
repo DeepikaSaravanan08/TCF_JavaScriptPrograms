@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asynchronous JavaScript Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #007acc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #005999;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Asynchronous JavaScript Example</h1>
+  <p>Click the button to see asynchronous operations in action!</p>
+
+  <button onclick="runAsyncDemo()">Run Demo</button>
+
+  <div id="output"></div>
+
+  <script>
+    const outputDiv = document.getElementById('output');
+
+    // Helper function to print messages
+    function logMessage(message) {
+      outputDiv.innerHTML += <p>${message}</p>;
+    }
+
+    // Asynchronous demo using async/await and promises
+    async function runAsyncDemo() {
+      outputDiv.innerHTML = ""; // clear output
+
+      logMessage("1️⃣ Starting...");
+
+      // Simulate an API call with a promise
+      const fetchData = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("2️⃣ Data fetched successfully!");
+        }, 2000);
+      });
+
+      // Wait for the promise to resolve
+      const data = await fetchData;
+      logMessage(data);
+
+      // Another async operation
+      const processData = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("3️⃣ Data processed successfully!");
+        }, 1500);
+      });
+
+      const processed = await processData;
+      logMessage(processed);
+
+      logMessage("4️⃣ Done!");
+    }
+  </script>
+
+</body>
+</html>
